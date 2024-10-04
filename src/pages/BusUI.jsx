@@ -10,6 +10,16 @@ import {
   Tab
 } from '@mui/material';
 import { useState, useEffect } from 'react';
+import logo from '../assets/trinity_logo.png';
+
+
+// Flag image URLs mapping
+const flagUrls = {
+  Rwanda: 'https://flagcdn.com/w320/rw.png',
+  Uganda: 'https://flagcdn.com/w320/ug.png',
+  Kenya: 'https://flagcdn.com/w320/ke.png',
+  'South Sudan': 'https://flagcdn.com/w320/ss.png',
+};
 
 // Sample Route Data
 const routeData = {
@@ -55,21 +65,39 @@ function Bus() {
     setSelectedDay(today === 0 ? 6 : today - 1); // Adjust to match the days array
   }, []);
 
+  const getCountryFlag = (city) => {
+    if (city.includes("Kigali")) return flagUrls.Rwanda;
+    if (city.includes("Kampala")) return flagUrls.Uganda;
+    if (city.includes("Nairobi")) return flagUrls.Kenya;
+    if (city.includes("Juba") || city.includes("Bor") || city.includes("Wau")) return flagUrls["South Sudan"];
+    return null;
+  };
+
   return (
     <Container>
-      <Typography
-        variant="h3"
-        align="center"
-        gutterBottom
+    {/* Sticky Wrapper for the Header */}
+    <div style={{ position: 'sticky', top: 0, zIndex: 1000 }}>
+      <CardHeader
+        title={
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={logo} alt="Trinity Express Logo" style={{ width: '250px', marginRight: '20px' }} />
+            <Typography variant="h4" style={{ color: '#fff', fontWeight: 'bold' }}>
+              Trinity Express Country Route Information
+            </Typography>
+          </div>
+        }
         sx={{
-          margin: '30px 0',
-          fontWeight: 'bold',
-          color: '#1976d2',
-          fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' }, // Responsive font size
+          backgroundColor: '#3f51b5',
+          backgroundImage: 'linear-gradient(45deg, #3f51b5 30%, #5c6bc0 90%)',
+          padding: '20px',
+          textAlign: 'center',
+          marginBottom: '30px',
+          borderRadius: '10px',
         }}
-      >
-        Country Route Information
-      </Typography>
+      />
+    </div>
+
+
 
       {/* Tabs for selecting days */}
       <Tabs
@@ -114,45 +142,62 @@ function Bus() {
 
           {/* Grid layout for routes */}
           <Grid container spacing={3}>
-            {routes.map((route, idx) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={idx}>
-                <Card
-                  sx={{
-                    borderRadius: '12px',
-                    boxShadow: '0 6px 10px rgba(0, 0, 0, 0.1)',
-                    transition: 'transform 0.3s ease-in-out',
-                    backgroundColor: '#f4f6f8',
-                    '&:hover': { transform: 'scale(1.05)' },
-                    minWidth: '100%',
-                  }}
-                >
-                  <CardHeader
-                    title={route.route}
-                    titleTypographyProps={{ variant: 'h6', style: { color: '#fff', fontWeight: 'bold' } }}
+            {routes.map((route, idx) => {
+              const [fromCity, toCity] = route.route.split(' - '); // Split the route into "from" and "to"
+              return (
+                <Grid item xs={12} sm={6} md={4} lg={3} key={idx}>
+                  <Card
                     sx={{
-                      backgroundColor: '#3f51b5',
-                      backgroundImage: 'linear-gradient(45deg, #3f51b5 30%, #5c6bc0 90%)',
-                      textAlign: 'center',
+                      borderRadius: '12px',
+                      boxShadow: '0 6px 10px rgba(0, 0, 0, 0.1)',
+                      transition: 'transform 0.3s ease-in-out',
+                      backgroundColor: '#f4f6f8',
+                      '&:hover': { transform: 'scale(1.05)' },
+                      minWidth: '100%',
                     }}
-                  />
-                  <CardContent>
-                    <Typography variant="h6" color="textPrimary" gutterBottom>
-                      Price: <span style={{ color: '#1976d2', fontWeight: 'bold' }}>{route.price}</span>
-                    </Typography>
-                    <Typography variant="body1" color="textSecondary" gutterBottom>
-                      Available Hours:
-                    </Typography>
-                    <ul style={{ paddingLeft: '20px' }}>
-                      {route.hours.map((hour, index) => (
-                        <li key={index} style={{ listStyle: 'circle', color: '#1976d2' }}>
-                          <Typography variant="body2">{hour}</Typography>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
+                  >
+                    <CardHeader
+                      title={
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <img
+                            src={getCountryFlag(fromCity)}
+                            alt={`${fromCity} Flag`}
+                            style={{ width: '30px', marginRight: '10px' }}
+                          />
+                          {route.route}
+                          <img
+                            src={getCountryFlag(toCity)}
+                            alt={`${toCity} Flag`}
+                            style={{ width: '30px', marginLeft: '10px' }}
+                          />
+                        </div>
+                      }
+                      titleTypographyProps={{ variant: 'h6', style: { color: '#fff', fontWeight: 'bold' } }}
+                      sx={{
+                        backgroundColor: '#3f51b5',
+                        backgroundImage: 'linear-gradient(45deg, #3f51b5 30%, #5c6bc0 90%)',
+                        textAlign: 'center',
+                      }}
+                    />
+                    <CardContent>
+                      <Typography variant="h6" color="textPrimary" gutterBottom>
+                        Price: <span style={{ color: '#1976d2', fontWeight: 'bold' }}>{route.price}</span>
+                      </Typography>
+                      <Typography variant="body1" color="textSecondary" gutterBottom>
+                        Available Hours:
+                      </Typography>
+                      <ul style={{ paddingLeft: '20px' }}>
+                        {route.hours.map((hour, index) => (
+                          <li key={index} style={{ listStyle: 'circle', color: '#1976d2' }}>
+                            <Typography variant="body2">{hour}</Typography>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              );
+            })}
           </Grid>
         </div>
       ))}
@@ -160,4 +205,4 @@ function Bus() {
   );
 }
 
-export default Bus;
+export default Bus

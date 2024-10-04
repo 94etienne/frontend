@@ -86,27 +86,53 @@ function Bus() {
     
     
     <Container >
-    {/* Sticky Wrapper for the Header */}
-    <div style={{ position: 'sticky', top: 0, zIndex: 1000 }}>
-      <CardHeader
-        title={
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={logo} alt="Trinity Express Logo" style={{ width: '250px', marginRight: '20px' }} />
-            <Typography variant="h4" style={{ color: '#fff', fontWeight: 'bold' }}>
-              Trinity Express Country Route Information
-            </Typography>
-          </div>
-        }
-        sx={{
-          backgroundColor: '#3f51b5',
-          backgroundImage: 'linear-gradient(45deg, #3f51b5 30%, #5c6bc0 90%)',
-          padding: '20px',
-          textAlign: 'center',
-          marginBottom: '30px',
-          borderRadius: '10px',
+{/* Sticky Wrapper for the Header */}
+<div style={{ position: 'sticky', top: 0, zIndex: 1000 }}>
+  <CardHeader
+    title={
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center', // Center content when screen is minimized
+          flexWrap: 'wrap', // Allow content to wrap on smaller screens
+          textAlign: 'center', // Ensure text is centered
         }}
-      />
-    </div>
+      >
+        <img
+          src={logo}
+          alt="Trinity Express Logo"
+          style={{
+            width: '250px',
+            marginRight: '20px',
+            marginBottom: '10px', // Add margin at the bottom for spacing when wrapped
+            maxWidth: '100%', // Ensure image resizes within its container
+          }}
+        />
+        <Typography
+          variant="h4"
+          style={{
+            color: '#fff',
+            fontWeight: 'bold',
+            fontSize: '1.5rem', // Set a smaller font size for better responsiveness
+            textAlign: 'center',
+          }}
+        >
+          Trinity Express Country Route Information
+        </Typography>
+      </div>
+    }
+    sx={{
+      backgroundColor: '#3f51b5',
+      backgroundImage: 'linear-gradient(45deg, #3f51b5 30%, #5c6bc0 90%)',
+      padding: { xs: '10px', sm: '20px' }, // Responsive padding
+      textAlign: 'center',
+      marginBottom: { xs: '10px', sm: '30px' }, // Adjust bottom margin on smaller screens
+      borderRadius: '10px',
+    }}
+  />
+</div>
+
 
 
 

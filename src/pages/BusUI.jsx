@@ -74,7 +74,18 @@ function Bus() {
   };
 
   return (
-    <Container>
+    <div style={{
+      backgroundImage: 'url(http://trinityexpress.rw/wp-content/uploads/2024/06/9A2A1545-scaled.jpg)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
+      padding: '20px',
+      minHeight: '100vh',
+
+    }}>
+    
+    
+    <Container >
     {/* Sticky Wrapper for the Header */}
     <div style={{ position: 'sticky', top: 0, zIndex: 1000 }}>
       <CardHeader
@@ -101,25 +112,29 @@ function Bus() {
 
       {/* Tabs for selecting days */}
       <Tabs
-        value={selectedDay}
-        centered
-        indicatorColor="primary"
-        textColor="primary"
-        variant="scrollable"
-        scrollButtons="auto"
-        allowScrollButtonsMobile
-      >
-        <Tab
-          label={`${days[selectedDay].label} / ${days[selectedDay].kinyarwanda} / ${days[selectedDay].french} / ${days[selectedDay].swahili}`}
-          sx={{
-            transition: '0.3s',
-            '&:hover': {
-              color: '#fff',
-              backgroundColor: '#1976d2',
-            },
-          }}
-        />
-      </Tabs>
+  value={selectedDay}
+  centered
+  indicatorColor="primary"
+  textColor="primary"
+  variant="scrollable"
+  scrollButtons="auto"
+  allowScrollButtonsMobile
+
+>
+  <Tab
+    label={`${days[selectedDay].label} / ${days[selectedDay].kinyarwanda} / ${days[selectedDay].french} / ${days[selectedDay].swahili}`}
+    sx={{
+      backgroundColor: '#4B0082', // Set default background color to black
+      color: '#fff', // Ensure text color is white for contrast
+      transition: '0.3s',
+      '&:hover': {
+        color: '#fff',
+        backgroundColor: '#1976d2', // Hover color changes to blue (#1976d2)
+      },
+    }}
+  />
+</Tabs>
+
 
       {/* Display routes for the selected day */}
       {Object.entries(routeData).map(([country, routes], index) => (
@@ -129,8 +144,9 @@ function Bus() {
             color="primary"
             gutterBottom
             sx={{
+              marginTop: '20px',
               fontWeight: 'bold',
-              color: '#1976d2',
+              color: '#fff',
               fontSize: { xs: '1.2rem', sm: '1.5rem', md: '1.7rem' },
             }}
           >
@@ -202,6 +218,7 @@ function Bus() {
         </div>
       ))}
     </Container>
+    </div>
   );
 }
 

@@ -88,49 +88,53 @@ function Bus() {
     <Container >
 {/* Sticky Wrapper for the Header */}
 <div style={{ position: 'sticky', top: 0, zIndex: 1000 }}>
-  <CardHeader
-    title={
-      <div
+<CardHeader
+  title={
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        textAlign: 'center',
+        maxWidth: '100%',  // Ensure the title section is responsive
+      }}
+    >
+      <img
+        src={logo}
+        alt="Trinity Express Logo"
         style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center', // Center content when screen is minimized
-          flexWrap: 'wrap', // Allow content to wrap on smaller screens
-          textAlign: 'center', // Ensure text is centered
+          width: '250px',
+          marginRight: '20px',
+          marginBottom: '10px',
+          maxWidth: '100%',
+        }}
+      />
+      <Typography
+        variant="h4"
+        style={{
+          color: '#fff',
+          fontWeight: 'bold',
+          fontSize: '2.5rem',
+          textAlign: 'center',
+          maxWidth: '100%',  // Ensure text title does not exceed the container width
         }}
       >
-        <img
-          src={logo}
-          alt="Trinity Express Logo"
-          style={{
-            width: '250px',
-            marginRight: '20px',
-            marginBottom: '10px', // Add margin at the bottom for spacing when wrapped
-            maxWidth: '100%', // Ensure image resizes within its container
-          }}
-        />
-        <Typography
-          variant="h4"
-          style={{
-            color: '#fff',
-            fontWeight: 'bold',
-            fontSize: '2.5rem', // Set a smaller font size for better responsiveness
-            textAlign: 'center',
-          }}
-        >
-          Trinity Express Country Road Information
-        </Typography>
-      </div>
-    }
-    sx={{
-      backgroundColor: '#3f51b5',
-      backgroundImage: 'linear-gradient(45deg, #3f51b5 30%, #5c6bc0 90%)',
-      padding: { xs: '10px', sm: '20px' }, // Responsive padding
-      textAlign: 'center',
-      marginBottom: { xs: '10px', sm: '30px' }, // Adjust bottom margin on smaller screens
-      borderRadius: '10px',
-    }}
-  />
+        Trinity Express Country Road Information
+      </Typography>
+    </div>
+  }
+  sx={{
+    backgroundColor: '#3f51b5',
+    backgroundImage: 'linear-gradient(45deg, #3f51b5 30%, #5c6bc0 90%)',
+    padding: { xs: '10px', sm: '20px' },
+    textAlign: 'center',
+    marginBottom: { xs: '10px', sm: '30px' },
+    borderRadius: '10px',
+    maxWidth: '100%',  // Make sure the header title takes full width of the card
+  }}
+/>
+
 </div>
 
 
@@ -145,21 +149,24 @@ function Bus() {
   variant="scrollable"
   scrollButtons="auto"
   allowScrollButtonsMobile
-
+  sx={{
+    maxWidth: '100%',  // Ensure the width of the tabs is responsive
+  }}
 >
   <Tab
     label={`${days[selectedDay].label} / ${days[selectedDay].kinyarwanda} / ${days[selectedDay].french} / ${days[selectedDay].swahili}`}
     sx={{
-      backgroundColor: '#4B0082', // Set default background color to black
-      color: '#fff', // Ensure text color is white for contrast
-      transition: '0.3s',
+      backgroundColor: '#4B0082',
+      color: '#fff',
+      fontSize: '1.5rem',
+      width: '100%',  // Make the tab take full width
       '&:hover': {
-        color: '#fff',
-        backgroundColor: '#1976d2', // Hover color changes to blue (#1976d2)
+        backgroundColor: '#1976d2',
       },
     }}
   />
 </Tabs>
+
 
 
       {/* Display routes for the selected day */}

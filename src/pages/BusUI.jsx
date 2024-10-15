@@ -87,60 +87,48 @@ function Bus() {
     
     <Container >
 {/* Sticky Wrapper for the Header */}
-<div style={{ position: 'sticky', top: 0, zIndex: 1000 }}>
-<CardHeader
-  title={
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-        textAlign: 'center',
-        maxWidth: '100%',  // Ensure the title section is responsive
-      }}
-    >
-      <img
-        src={logo}
-        alt="Trinity Express Logo"
+<div style={{ position: 'sticky', top: 0, zIndex: 1000, width: '100%' }}>
+  <CardHeader
+    title={
+      <div
         style={{
-          width: '250px',
-          marginRight: '20px',
-          marginBottom: '10px',
-          maxWidth: '100%',
-        }}
-      />
-      <Typography
-        variant="h4"
-        style={{
-          color: '#fff',
-          fontWeight: 'bold',
-          fontSize: '2.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           textAlign: 'center',
-          maxWidth: '100%',  // Ensure text title does not exceed the container width
+          width: '100%',
         }}
       >
-        Trinity Express Country Road Information
-      </Typography>
-    </div>
-  }
-  sx={{
-    backgroundColor: '#3f51b5',
-    backgroundImage: 'linear-gradient(45deg, #3f51b5 30%, #5c6bc0 90%)',
-    padding: { xs: '10px', sm: '20px' },
-    textAlign: 'center',
-    marginBottom: { xs: '10px', sm: '30px' },
-    borderRadius: '10px',
-    maxWidth: '100%',  // Make sure the header title takes full width of the card
-  }}
-/>
-
+        <img
+          src={logo}
+          alt="Trinity Express Logo"
+          style={{
+            width: '250px',
+            marginRight: '10px',
+            maxWidth: '100%',
+          }}
+        />
+        <Typography
+          variant="h4"
+          style={{
+            color: '#fff',
+            fontWeight: 'bold',
+            fontSize: '2.5rem',
+            width: '100%',
+          }}
+        >
+          Trinity Express Country Road Information
+        </Typography>
+      </div>
+    }
+    sx={{
+      backgroundColor: '#3f51b5',
+      padding: '10px',
+      width: '100%',
+    }}
+  />
 </div>
 
-
-
-
-      {/* Tabs for selecting days */}
 <Tabs
   value={selectedDay}
   centered
@@ -174,6 +162,12 @@ function Bus() {
     }}
   />
 </Tabs>
+
+
+
+
+
+
 
 
       {/* Display routes for the selected day */}

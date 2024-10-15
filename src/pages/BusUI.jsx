@@ -96,6 +96,7 @@ function Bus() {
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
+          flexDirection: 'column', // Change to column for smaller screens
           width: '100%',
         }}
       >
@@ -106,6 +107,9 @@ function Bus() {
             width: '250px',
             marginRight: '10px',
             maxWidth: '100%',
+            '@media (max-width: 600px)': {
+              width: '150px', // Smaller image on small devices
+            },
           }}
         />
         <Typography
@@ -115,6 +119,9 @@ function Bus() {
             fontWeight: 'bold',
             fontSize: '2.5rem',
             width: '100%',
+            '@media (max-width: 600px)': {
+              fontSize: '1.5rem', // Adjust font size on smaller screens
+            },
           }}
         >
           Trinity Express Country Road Information
@@ -125,9 +132,13 @@ function Bus() {
       backgroundColor: '#3f51b5',
       padding: '10px',
       width: '100%',
+      '@media (max-width: 600px)': {
+        padding: '5px', // Reduce padding for smaller screens
+      },
     }}
   />
 </div>
+
 
 <Tabs
   value={selectedDay}

@@ -114,11 +114,11 @@ function Bus() {
           style={{
             color: '#fff',
             fontWeight: 'bold',
-            fontSize: '1.5rem', // Set a smaller font size for better responsiveness
+            fontSize: '2.5rem', // Set a smaller font size for better responsiveness
             textAlign: 'center',
           }}
         >
-          Trinity Express Country Route Information
+          Trinity Express Country Road Information
         </Typography>
       </div>
     }

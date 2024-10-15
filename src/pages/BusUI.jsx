@@ -141,32 +141,39 @@ function Bus() {
 
 
       {/* Tabs for selecting days */}
-      <Tabs
+<Tabs
   value={selectedDay}
   centered
   indicatorColor="primary"
   textColor="primary"
   variant="scrollable"
-  scrollButtons="auto"
-  allowScrollButtonsMobile
   sx={{
-    maxWidth: '100%',  // Ensure the width of the tabs is responsive
+    width: '100%', // Ensure the Tabs container takes up the full width
+    backgroundColor: '#4B0082',
+    marginTop: '10px',
+    '&:hover': {
+      backgroundColor: '#1976d2',
+    },
   }}
 >
   <Tab
-    label={`${days[selectedDay].label} / ${days[selectedDay].kinyarwanda} / ${days[selectedDay].french} / ${days[selectedDay].swahili}`}
+    label={
+      <div style={{ whiteSpace: 'normal', textAlign: 'center', padding: '0 10px' }}>
+        {`${days[selectedDay].label} / ${days[selectedDay].kinyarwanda} / ${days[selectedDay].french} / ${days[selectedDay].swahili}`}
+      </div>
+    }
     sx={{
-      backgroundColor: '#4B0082',
       color: '#fff',
-      fontSize: '1.5rem',
-      width: '100%',  // Make the tab take full width
+      fontSize: '2.2rem',
+      width: '100%', // Make each Tab take up 100% of the Tabs width
+      maxWidth: '100%', // Prevent the Tab content from exceeding the width
+      textAlign: 'center', // Center the text inside the Tab
       '&:hover': {
         backgroundColor: '#1976d2',
       },
     }}
   />
 </Tabs>
-
 
 
       {/* Display routes for the selected day */}

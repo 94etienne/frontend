@@ -9,9 +9,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/bringback" element={<Navigate to="admin-dashboard" />}>
+{/*       <Route path="/bringback" element={<Navigate to="admin-dashboard" />}>
           {" "}
-        </Route>
+        </Route> */}
 {/*         <Route path="/" element={<Bus />} /> */}
         <Route path="/" element={<NotFound />} />
  
